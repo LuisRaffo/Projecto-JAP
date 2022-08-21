@@ -29,5 +29,4 @@ document.addEventListener("DOMContentLoaded", async function(){
     listadoProductos.data.products.forEach(producto => {
         listado.innerHTML += getHTML(producto);        
     });
-    console.log(listadoProductos);
     });

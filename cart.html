@@ -21,7 +21,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link" href="home.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -30,6 +30,19 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="Nombre"> 
+            </a>
+            <ul class="dropdown-menu navbar-dark bg-dark">
+              <li>
+                <a class="dropdown-item nav-link" href="/my-profile.html">Perfil</a>
+              </li>
+              <li>
+                <a class="dropdown-item nav-link" href="/cart.html">carrito</a>
+              </li>
+              <li>
+                <a class="dropdown-item nav-link" onclick="Logout()" href="/index.html">Log Out</a>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -37,8 +50,65 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="text-center">
+        <h1>Carrito de compras</h1>
+      </div>
+      <br>
+      <div class="">
+        <h5>Articulos a comprar</h5>
+      </div>
+      <br>
+
+      <div class="col-12">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-2"><p><strong>Nombre</strong></p></div>
+          <div class="col-2"><p><strong>Costo</strong></p></div>
+          <div class="col-2"><p><strong>cantidad</strong></div>
+          <div class="col-2"><p><strong>Subtotal</strong></div>
+            <hr>
+        </div>
+        <div class="cart-container">
+        </div>
+        <br>
+        <hr>
+        <hr>
+        <form>
+          <div class="col-12">
+            <H2>Tipo de Envio</H2>
+            <div class="">
+              <input type="radio" id="Premium"
+               name="send" value="Premium">
+              <label for="contactChoice1">Premium de 2 a 5 dias (15%)</label>
+              <br>
+              <input type="radio" id="Expres"
+              name="send" value="Expres">
+              <label for="contactChoice2">Expres de 5 a 8 dias (7%)</label>
+              <br>
+              <input type="radio" id="Standard"
+              name="send" value="Standard">
+              <label for="contactChoice3">Standard de 12 a 15 dias (5%)</label>
+            </div>
+            <h2>Direccion de Envio</h2>
+            <div class="row" id="direccion">
+              <div class="row">
+                <div class="col-6">
+                  <label>Calle</label><br>
+                  <input type="text">
+                </div>
+                <div class="col-4">
+                  <label>Numero</label><br>
+                  <input type="text">
+                </div>
+              </div>
+              <div class="">
+                <label>Esquina</label><br>
+                <input type="text" name="" id="">
+              </div>
+            </div>
+        </form>
+          <hr>
+        </div>
       </div>
     </div>
   </main>

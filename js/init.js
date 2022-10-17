@@ -39,3 +39,11 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+let Nombre = document.getElementById("Nombre")
+Nombre.innerHTML = localStorage.getItem("Usuario")
+
+function Logout() {
+  localStorage.removeItem("Usuario")
+}
+

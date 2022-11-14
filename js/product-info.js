@@ -31,39 +31,43 @@ function getProduct(producto){
         <p><strong>Cantidad de vendidos</strong></p>
         <p>${producto.soldCount}</p>
         </div>
-        <div class="row">
-        <p><strong>imagenes ilustrativas</strong></p>
-        <div class="row d-flex product-img">
-        <div class="col-3">
-        <img class="img-fluid" src="${producto.images[0]}" alt="">
-        </div>
-        <div class="col-3">
-        <img class="img-fluid" src="${producto.images[1]}" alt="">
-        </div>
-        <div class="col-3">
-        <img class="img-fluid" src="${producto.images[2]}" alt="">
-        </div>
-        <div class="col-3">
-        <img class="img-fluid" src="${producto.images[3]}" alt="">
-        </div>
-        </div>
-        </div>
-        <br>
-        <div class="row">
-        <h4><strong>Productos relacionados</strong></h4>
-        <div class="row related-products"> 
-        <div class="col-6 border" onclick="setProdID(${producto.relatedProducts[0].id})">
-        <strong>${producto.relatedProducts[0].name}</strong>
-        <img class="img-fluid" src="${producto.relatedProducts[0].image}" alt="">
-        </div>
-        <div class="col-6 border" onclick="setProdID(${producto.relatedProducts[1].id})">
-        <strong>${producto.relatedProducts[1].name}</strong>
-        <img class="img-fluid" src="${producto.relatedProducts[1].image}" alt="">
-        </div>
-        </div>
+        
      </div>`
 }
     
+function proImg (producto){
+    return`
+    <div class="row">
+        <p><strong>imagenes ilustrativas</strong></p>
+        <div class="row d-flex">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                         <img src="${producto.images[0]}" class="d-block w-100" alt="producto">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="${producto.images[1]}" class="d-block w-100" alt="producto">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="${producto.images[2]}" class="d-block w-100" alt="producto">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="${producto.images[3]}" class="d-block w-100" alt="producto">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    `
+}
 
 function comment(producto) {
     return`
@@ -74,12 +78,27 @@ function comment(producto) {
     `
 }
 
-
+function relPro (producto) {
+    return`
+    <div class="col-3">
+    </div>
+    <div class="col-3 border" onclick="setProdID(${producto.relatedProducts[0].id})">
+    <strong>${producto.relatedProducts[0].name}</strong>
+    <img class="img-fluid" src="${producto.relatedProducts[0].image}" alt="">
+    </div>
+    <div class="col-3 border" onclick="setProdID(${producto.relatedProducts[1].id})">
+    <strong>${producto.relatedProducts[1].name}</strong>
+    <img class="img-fluid" src="${producto.relatedProducts[1].image}" alt="">
+    </div>
+    `
+}
 
 document.addEventListener("DOMContentLoaded", async function(){
     const listaDatos = await getJSONData(URL);
     const comentarios = await getJSONData(comments);
     datos.innerHTML = getProduct(listaDatos.data);
+    img.innerHTML = proImg(listaDatos.data)
+    related.innerHTML = relPro(listaDatos.data);
     comentarios.data.forEach(producto => {
         var estrellas = producto.score;
         for (let i = 0; i < estrellas; i++) {
@@ -92,10 +111,10 @@ document.addEventListener("DOMContentLoaded", async function(){
                 
             }
         }
-        ucomments.innerHTML += comment(producto);
-        
-        
+        ucomments.innerHTML += comment(producto); 
     });    
+
+
 });
 
 

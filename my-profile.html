@@ -36,7 +36,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link" href="home.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -45,6 +45,19 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="Nombre"> 
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg-end navbar-dark bg-dark">
+              <li>
+                <a class="dropdown-item nav-link" href="/my-profile.html">Perfil</a>
+              </li>
+              <li>
+                <a class="dropdown-item nav-link" href="/cart.html">carrito</a>
+              </li>
+              <li>
+                <a class="dropdown-item nav-link" onclick="Logout()" href="/index.html">Log Out</a>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -52,9 +65,43 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+      <form method="get" class="needs-validation" id="Datos" onsubmit="return false" novalidate>
+        <img class="d-flex rounded float-end" id="perfil" src="https://image.shutterstock.com/image-vector/man-silhouette-profile-picture-vector-260nw-221431054.jpg" alt="perfil" height="100" >
+        <div class="p-3">
+          <h1 class="">Perfil</h1>
+        </div>
+        <br>
+        <hr>
+        <div class="row row-cols-2">
+          <div class="col-6">
+            <label for="PNombre" class="form-label">Primer Nombre</label><br>
+            <input type="text" id="PNombre" class="form-control" value="" required>
+          </div>
+          <div class="col-6">
+            <label for="SNombre" class="form-label">Segundo Nombre</label><br>
+            <input type="text" id="SNombre" class="form-control" value="">
+          </div>
+          <div class="col-6">
+            <label for="PApellido" class="form-label">Primer Apellido</label><br>
+            <input type="text" id="PApellido" class="form-control" value="" required>
+          </div>
+          <div class="col-6">
+            <label for="SApellido" class="form-label">Segundo Apellido</label><br>
+            <input type="text" id="SApellido" class="form-control"value="">
+          </div>
+          <div class="col-6">
+            <label for="E-mail" class="form-label">E-mail</label><br>
+            <input type="email" id="Email" class="form-control" value="" required>
+          </div>
+          <div class="col-6">
+            <label for="telefono" class="form-label">telefono</label><br>
+            <input type="text" id="Telefono" class="form-control" value="">
+          </div>
+        </div>
+        <div class="p-5"></div>
+        <hr>
+        <button class="btn btn-primary" id="Cambios">Guardar Cambios</button>
+      </form>
     </div>
   </main>
   <footer class="text-muted">

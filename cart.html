@@ -5,10 +5,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
+  <link href="css/styles.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link" href="home.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -30,6 +30,19 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="Nombre"> 
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg-end navbar-dark bg-dark">
+              <li>
+                <a class="dropdown-item nav-link" href="/my-profile.html">Perfil</a>
+              </li>
+              <li>
+                <a class="dropdown-item nav-link" href="/cart.html">carrito</a>
+              </li>
+              <li>
+                <a class="dropdown-item nav-link" onclick="Logout()" href="/index.html">Log Out</a>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -37,8 +50,183 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="text-center">
+        <h1>Carrito de compras</h1>
+      </div>
+      <br>
+      <div class="">
+        <h5>Articulos a comprar</h5>
+      </div>
+      <br>
+
+      <div class="col-12">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-2"><p><strong>Nombre</strong></p></div>
+          <div class="col-2"><p><strong>Costo</strong></p></div>
+          <div class="col-2"><p><strong>cantidad</strong></div>
+          <div class="col-2"><p><strong>Subtotal</strong></div>
+            <hr>
+        </div>
+        <div class="cart-container">
+        </div>
+        <br>
+        <hr>
+        <hr>
+        <form method="get" class="needs-validation" id="ventas" onsubmit="return false" novalidate>
+          <div class="col-12">
+            <H2>Tipo de Envio</H2>
+            <div class="sendtipe">
+              <input type="radio" id="Premium" name="send" value="Premium" class="form-check-input" required>
+              <label for="sendChoice1" class="form-label">Premium de 2 a 5 dias (15%)</label>
+              <br>
+              <input type="radio" id="Expres" class="form-check-input" name="send" value="Expres"required>
+              <label for="sendChoice2" class="form-label">Expres de 5 a 8 dias (7%)</label>
+              <br>
+              <input type="radio" id="Standard" class="form-check-input" name="send" value="Standard"required>
+              <label for="sendChoice3" class="form-label">Standard de 12 a 15 dias (5%)</label>
+              <div class="invalid-feedback">
+                Debe seleccionar una opsión de Envio
+              </div>
+            </div>
+            <h2>Direccion de Envio</h2>
+            <div class="row" id="direccion">
+              <div class="row">
+                <div class="col-6">
+                  <label for="calle" class="form-label">Calle</label><br>
+                  <input type="text" class="form-control" required>
+                  <div class="invalid-feedback">
+                    Debe indicar una Calle
+                  </div>
+                </div>
+                <div class="col-4">
+                  <label class="form-label">Numero</label><br>
+                  <input type="text" class="form-control" required>
+                  <div class="invalid-feedback">
+                    Debe indicar un Numero
+                  </div>
+                </div>
+              </div>
+              <div class="col-10">
+                <label class="form-label">Esquina</label><br>
+                <input  type="text" class="form-control" required>
+                <div class="invalid-feedback">
+                  Debe indicar una Esquina
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div id="costo">
+              <h1>Costos</h1>
+              <div class="border ">
+                <div class="row row-cols-2">
+                  <div class="col-9">
+                    <h2>Subtotal</h2>
+                  </div>
+                  <div class="col-3" id="Costoproductos">
+                  </div>
+                  <div>
+                    <p>Costo unitario del producto por cantidad</p>
+                  </div>
+                </div>
+              </div>
+              <div class="border">
+                <div class="row row-cols-2">
+                  <div class="col-9">
+                    <h2>Costo de envio</h2>
+                  </div>
+                  <div class="col-3" id="Costoenvio">
+                  </div>
+                  <div><p>Segun el tipo de envio</p></div>
+                </div>
+              </div>
+              <div class="border">
+                <div class="row row-cols-2">
+                  <div class="col-9">
+                    <h2>Total</h2>
+                  </div>
+                  <div class="col-3">
+                    <h3 id="Costototal"></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div id="formasdepago">
+              <h1>Forma de Pago</h1>        
+              <div class="row row-cols-2">
+                <div id="avisopago" class="col-4">
+                  
+                </div>
+                <div>
+                  <button type="button" class="btn btn-link ps-0" data-bs-toggle="modal"
+                  data-bs-target="#modalpagos" id="pagomodal">Seleccionar</button>
+                  <div id="pagomodal2">
+                  </div>
+
+                </div>
+              </div>
+              <div class="modal fade" id="modalpagos" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5">Forma de pago</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <input type="radio" id="Tarcred" name="metodopago" class="form-check-input" required>
+                      <label for="sendChoice1" class="form-label">Tarjeta de credito</label>
+                      <hr>
+                      <form >
+                        <fieldset id="Tarjeta">
+                          <div class="row row-cols-2">
+                            <div class="col-6">
+                              <label class="form-label">Numero de tarjeta</label><br>
+                              <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-4">
+                              <label class="form-label">Codigo de seg.</label><br>
+                              <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-6">
+                              <label class="form-label">Vencimiento (MM/AA)</label>
+                              <br>
+                              <input type="month" class="form-control" required>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </form>
+                      <br>
+                      <input type="radio" id="TransBanc" name="metodopago" class="form-check-input" required>
+                      <label for="sendChoice2" class="form-label">Transferencia bancaria</label>
+                      <hr>
+                      <form>
+                        <fieldset id="Banco">
+                          <div class="col-6">
+                            <label for="calle" class="form-label">Numero de cuenta</label><br>
+                            <input type="text" class="form-control" required>
+                          </div>
+                        </fieldset>
+                      </form>
+                    </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="d-grid">
+              <button class="btn btn-primary" href="#" type="submit" id="enviarcompras">Comprar</button>
+              <div class="popup text-center d-none" id="popup">
+                <br>
+                <p>Has Comprado con exito!</p>
+              </div>
+            </div>
+
+        </form>
+          <hr>
+        </div>
       </div>
     </div>
   </main>

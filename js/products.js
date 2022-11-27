@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 let categoria = localStorage.getItem("catID")
 const URL= PRODUCTS_URL + categoria + EXT_TYPE;
 const listado = document.querySelector(".product-list");
@@ -146,4 +144,3 @@ document.addEventListener("DOMContentLoaded", async function(){
       localStorage.setItem("ProdID", id);
       window.location = "product-info.html"
   }
->>>>>>> Stashed changes
